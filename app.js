@@ -15,6 +15,7 @@ mongoose.connect(
         useUnifiedTopology: true,
     }
 );
+mongoose.Promise = global.Promise;
 mongoose.connection.once('open', () => { 
     console.log('MongoDB connected');
 }).on('error', (error) => {
