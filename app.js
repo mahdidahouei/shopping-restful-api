@@ -2,9 +2,24 @@ const express = require('express');
 const app = express();
 const morgan = require('morgan');
 const body_parser = require('body-parser');
+const mongoose = require('mongoose');
 
 const productRoutes = require('./api/routes/products');
 const orderRoutes = require('./api/routes/orders');
+
+//connect to the database
+mongoose.connect(
+    'mongodb://localhost/node-rest-shop',
+    {
+        useNewUrlParser: true,
+        useUnifiedTopology: true,
+    }
+);
+mongoose.connection.once('open', () => { 
+    console.log('MongoDB connected');
+}).on('error', (error) => {
+    console.log('MongoDB connection error: ', error);
+});
 
 app.use(morgan('dev'));
 app.use(body_parser.urlencoded({extended: false}));
