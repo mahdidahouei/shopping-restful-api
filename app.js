@@ -22,6 +22,7 @@ mongoose.connection.once('open', () => {
 }).on('error', (error) => {
     console.log('MongoDB connection error: ', error);
 });
+mongoose.set('useCreateIndex', true);
 
 app.use(morgan('dev'));
 app.use('/uploads', express.static('uploads'));
