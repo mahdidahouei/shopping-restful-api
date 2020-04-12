@@ -2,7 +2,7 @@ const mongoose = require('mongoose');
 
 const userSchema = mongoose.Schema({
     _id: mongoose.Schema.Types.ObjectId,
-    email: {
+    email: { // matck string validate the input to be only an email address!
         type: String, 
         required: true, 
         unique: true,

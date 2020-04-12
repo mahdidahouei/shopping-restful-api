@@ -7,14 +7,14 @@ const storage = multer.diskStorage({
         callback(null, './uploads/');
     },
     filename: (req, file, callback) => {
-        var dateString = new Date().toISOString();
-        i++;
+        var dateString = new Date().toISOString(); // It's not working when concatenating dateString with file.originalname to make the name unique!!! don't know why
+        i++; // to make images name unique
         callback(null, i + '-' + file.originalname);
     },  
 });
 const fileFilter = (req, file, callback) => {
     if(file.mimetype === 'image/jpeg' || file.mimetype === 'image/png')
-        callback(null, true);
+        callback(null, true); // return true for jpeg and png files
     else 
         callback(new Error('Only jpeg and png files are accepted'), false);
 }

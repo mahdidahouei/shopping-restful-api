@@ -66,7 +66,7 @@ exports.users_login_user = (req, res, next) => {
                     );
                     return res.status(200).json({
                         message: 'Auth successful',
-                        token: token,
+                        token: token, // response a token for client(client must save the token in a storage to provide it for authentication)
                     });
                 }
                 res.status(401).json({

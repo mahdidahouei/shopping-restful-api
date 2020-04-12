@@ -1,6 +1,6 @@
 const jwt = require('jsonwebtoken');
 
-module.exports = (req, res, next) => {
+module.exports = (req, res, next) => { // get token from client and check the authentication
     try{
         const token = req.headers.authorization.split(" ")[1];
         console.log(token);

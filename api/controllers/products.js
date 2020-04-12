@@ -3,7 +3,7 @@ const mongoose = require('mongoose');
 
 exports.products_get_all = (req, res, next) => {
     Product.find()
-    .select('_id name price productImage')
+    .select('_id name price productImage') // only fetch these properties
     .exec()
     .then(docs => {
         
